@@ -1,0 +1,37 @@
+<!-- Dataiku Standard Webapp - HTML tab -->
+<div class="gtfs-app">
+  <h1>GTFS File Downloader</h1>
+  <p class="subtitle">
+    Download GTFS files from the <code>pta_wojhati_raw</code> Hive database
+    (Wojhati bus network feed).
+  </p>
+
+  <div class="toolbar">
+    <button id="btn-download-all" class="btn btn-primary">
+      &#11015; Download all as gtfs.zip
+    </button>
+    <button id="btn-refresh" class="btn">&#8635; Refresh list</button>
+  </div>
+
+  <div id="status" class="status"></div>
+
+  <table class="file-table">
+    <thead>
+      <tr>
+        <th>GTFS file</th>
+        <th>Source table</th>
+        <th>Access</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="file-rows">
+      <tr><td colspan="4">Loading&hellip;</td></tr>
+    </tbody>
+  </table>
+
+  <p class="footnote">
+    Large tables (<code>stop_times</code>, <code>shapes</code>) can take a
+    minute or two to export &mdash; keep the tab open until the download
+    starts.
+  </p>
+</div>

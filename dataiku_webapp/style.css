@@ -1,0 +1,52 @@
+/* Dataiku Standard Webapp - CSS tab */
+
+.gtfs-app {
+  max-width: 860px;
+  margin: 24px auto;
+  padding: 0 16px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #222;
+}
+
+.gtfs-app h1 { font-size: 22px; margin-bottom: 4px; }
+.gtfs-app .subtitle { color: #666; margin-top: 0; }
+
+.toolbar { margin: 16px 0; display: flex; gap: 8px; }
+
+.btn {
+  padding: 8px 14px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background: #f7f7f7;
+  cursor: pointer;
+  font-size: 14px;
+}
+.btn:hover { background: #ececec; }
+.btn-primary {
+  background: #2c7be5;
+  border-color: #2c7be5;
+  color: #fff;
+}
+.btn-primary:hover { background: #1a68d1; }
+.btn-small { padding: 4px 10px; font-size: 13px; }
+
+.status { min-height: 20px; margin: 8px 0; color: #2c7be5; font-size: 14px; }
+.status.error { color: #c0392b; }
+
+.file-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.file-table th, .file-table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e3e3e3;
+}
+.file-table th { background: #f0f3f7; }
+
+.tag {
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 8px;
+  vertical-align: middle;
+}
+.tag-req { background: #e8f1fd; color: #2c7be5; }
+
+.footnote { color: #888; font-size: 12px; margin-top: 14px; }
