@@ -35,6 +35,9 @@ MALL_WORDS = ("mall", "center", "centre", "souk", "souq", "plaza",
 
 # survey-derived calibration (see STUDY.md sections 5-7)
 SURVEY_CASES_AM = 60.0   # observed cases, 11 locations, one AM peak
+N_MEDIUM = 400           # next-N stops by AM-peak throughput -> Medium tier
+N_LOW = 400              # following N stops -> Low tier
+TIER_RATE_MULT = {"High": 1.0, "Medium": 0.5, "Low": 0.25}  # of survey rate
 PM_FACTOR = 1147.0 / 1254.0
 OPERATING_DAYS = 261
 P_FLIP_30S = 0.0259
@@ -140,7 +143,10 @@ def main():
     print(f"AM-peak bus arrivals at affected stops: {exp_am:,.0f} "
           f"(surveyed 27: {surveyed['buses_am_peak'].sum():,.0f})")
 
-    # ---- scaling ----------------------------------------------------------
+    # ---- three-tier risk model -------------------------------------------
+    # High   = the profile-matched stops (survey-calibrated case rate)
+    # Medium = next N_MEDIUM stops by AM-peak throughput (assumed 50% rate)
+    # Low    = following N_LOW stops (assumed 25% rate)
     # Case rate calibrated on the SAME exposure basis used for scaling:
     # GTFS AM-peak arrivals (all routes) at the 27 surveyed stops.
     survey_exp_am = surveyed["buses_am_peak"].sum()
@@ -148,22 +154,32 @@ def main():
     print(f"\ncalibrated case rate: {100 * rate:.2f} cases per 100 AM-peak "
           f"arrivals (GTFS basis)")
 
-    # denominators for dOTP: weekday bus trips, total and peak
+    df["tier"] = "Minimal"
+    df.loc[df["affected"], "tier"] = "High"
+    rest = df[~df["affected"]].sort_values("buses_am_peak", ascending=False)
+    df.loc[rest.index[:N_MEDIUM], "tier"] = "Medium"
+    df.loc[rest.index[N_MEDIUM:N_MEDIUM + N_LOW], "tier"] = "Low"
+
+    # denominators for dOTP: weekday bus trips with a peak-hour stop event
     n_day_trips = len(day_bus_trips)
     peak_trip_ids = set(stb.loc[stb["am"] | stb["pm"], "trip_id"])
     n_peak_trips = len(peak_trip_ids)
+    annual_peak_trips = n_peak_trips * OPERATING_DAYS
     print(f"weekday bus trips: {n_day_trips:,} | with a peak-hour stop "
           f"event: {n_peak_trips:,}")
-    scale = []
-    for label, rate_factor in [("low (half survey rate at new stops)", 0.5),
-                               ("central (survey rate)", 1.0)]:
-        cases_am_new = (exp_am - survey_exp_am) * rate * rate_factor
-        cases_am = SURVEY_CASES_AM + cases_am_new
+
+    tiers = []
+    for tier, mult in TIER_RATE_MULT.items():
+        sub = df[df["tier"] == tier]
+        arr = sub["buses_am_peak"].sum()
+        cases_am = arr * rate * mult
         annual = cases_am * (1 + PM_FACTOR) * OPERATING_DAYS
-        annual_peak_trips = n_peak_trips * OPERATING_DAYS
-        scale.append(dict(
-            scenario=label,
-            affected_stops=n_aff,
+        tiers.append(dict(
+            tier=tier, stops=len(sub),
+            am_peak_arrivals=int(arr),
+            pct_network_exposure=round(100 * arr
+                                       / df["buses_am_peak"].sum(), 1),
+            rate_multiplier=mult,
             cases_per_am_peak=round(cases_am, 0),
             annual_cases=round(annual, -2),
             annual_delay_h_30s=round(annual * 30 / 3600.0, 0),
@@ -174,8 +190,13 @@ def main():
             dOTP_peak_pp_60s=round(100 * annual * P_FLIP_60S
                                    / annual_peak_trips, 2),
         ))
-    scale_df = pd.DataFrame(scale)
-    print("\n", scale_df.to_string(index=False))
+    tier_df = pd.DataFrame(tiers)
+    total = tier_df.drop(columns=["tier", "rate_multiplier"]).sum()
+    total["tier"], total["rate_multiplier"] = "TOTAL", ""
+    total["pct_network_exposure"] = round(
+        100 * tier_df["am_peak_arrivals"].sum() / df["buses_am_peak"].sum(), 1)
+    tier_df = pd.concat([tier_df, total.to_frame().T], ignore_index=True)
+    print("\n", tier_df.to_string(index=False))
     print("\ntop 15 affected stops by AM-peak arrivals (non-surveyed):")
     top = aff[~aff["is_surveyed"]].head(15)
     print(top[["stop_id", "stop_name", "buses_am_peak", "routes_served",
@@ -183,11 +204,13 @@ def main():
 
     keep = ["stop_id", "stop_name", "buses_day", "buses_am_peak",
             "buses_pm_peak", "routes_served", "metro_dist_m", "near_metro",
-            "mall_frontage", "is_surveyed", "affected"]
+            "mall_frontage", "is_surveyed", "affected", "tier"]
     df[keep].sort_values("buses_am_peak", ascending=False).to_csv(
         os.path.join(OUT, "network_stop_scores.csv"), index=False)
-    aff[keep].to_csv(os.path.join(OUT, "affected_stops.csv"), index=False)
-    scale_df.to_csv(os.path.join(OUT, "network_scaling.csv"), index=False)
+    df.loc[df["tier"] != "Minimal", keep].sort_values(
+        ["tier", "buses_am_peak"], ascending=[True, False]).to_csv(
+        os.path.join(OUT, "affected_stops.csv"), index=False)
+    tier_df.to_csv(os.path.join(OUT, "tier_summary.csv"), index=False)
     print("\noutputs written to", OUT)
 
 

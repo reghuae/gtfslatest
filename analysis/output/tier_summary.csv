@@ -1,0 +1,5 @@
+tier,stops,am_peak_arrivals,pct_network_exposure,rate_multiplier,cases_per_am_peak,annual_cases,annual_delay_h_30s,extra_late_trips_30s,extra_late_trips_60s,dOTP_peak_pp_30s,dOTP_peak_pp_60s
+High,112,12622,24.3,1.0,363.0,181600.0,1513.0,4700.0,11500.0,0.18,0.45
+Medium,400,18657,35.8,0.5,269.0,134200.0,1118.0,3480.0,8500.0,0.14,0.33
+Low,400,8273,15.9,0.25,60.0,29800.0,248.0,770.0,1880.0,0.03,0.07
+TOTAL,912.0,39552.0,76.0,,692.0,345600.0,2879.0,8950.0,21880.0,0.35,0.8500000000000001

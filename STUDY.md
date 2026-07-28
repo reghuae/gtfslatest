@@ -29,11 +29,14 @@ distribution from the 22 July AVL data (75,780 stop records, 2,999 trips,
 | 30 s (operations estimate) | ≈ 780 | **−0.29 pp** | −0.07 pp |
 | 60 s (queue + re-approach) | ≈ 1,900 | **−0.70 pp** | −0.17 pp |
 
-These figures cover **only the 11 surveyed locations**. The same behaviour is
-visible at comparable metro-station and mall stops across the network, so the
-network-wide effect scales with the number of affected stops (Section 8).
-The stronger case for enforcement is the combination: measurable OTP
-erosion **plus** ~30,000 annual passenger-safety exposures where boarding
+Scaled network-wide with a three-tier risk model (Section 8) — 112
+High-sensitivity stops matching the surveyed profile, plus the next 400
+(Medium) and following 400 (Low) stops by peak throughput — the estimate
+reaches **≈ 346,000 blocked-layby events per year across 912 stops carrying
+76 % of all peak bus arrivals**, costing **≈ 2,900 bus-hours of direct delay
+and 0.35–0.85 percentage points of peak OTP** network-wide. The stronger
+case for enforcement is the combination: measurable OTP erosion **plus**
+hundreds of thousands of annual passenger-safety exposures where boarding
 happens in a live traffic lane.
 
 ---
@@ -158,29 +161,35 @@ least that of the survey cluster's lower quartile (≥ 46 arrivals/3 h) AND
 metro/tram station within 200 m or mall/souq frontage** (computation:
 `analysis/network_scoring.py`).
 
-**Result: 112 stops network-wide fit the affected profile** (88 metro-
-adjacent, 23 mall-frontage), together receiving **12,622 AM-peak bus
-arrivals** — six times the surveyed cluster's 2,084. The largest non-surveyed
-exposures are Ibn Battuta Bus Station, Union Metro, Mall of the Emirates,
-Equiti Metro, Gold Souq, Abu Baker Al Siddique Metro and Dubai Mall Metro
-(full list: `analysis/output/affected_stops.csv`).
+**112 stops fit the surveyed profile** (88 metro-adjacent, 23 mall-frontage) —
+they form the **High-sensitivity tier**. The largest non-surveyed exposures
+are Ibn Battuta Bus Station, Union Metro, Mall of the Emirates, Equiti Metro,
+Gold Souq, Abu Baker Al Siddique Metro and Dubai Mall Metro. The remaining
+stops are ranked by AM-peak throughput: the next 400 form the **Medium tier**
+and the following 400 the **Low tier**; the residual ~1,600 stops (median
+4 buses/hour) are treated as negligible. Full per-stop tiers:
+`analysis/output/affected_stops.csv` and `network_stop_scores.csv`.
 
-Applying the survey-calibrated case rate (60 cases / 2,084 GTFS AM arrivals =
-**2.9 cases per 100 peak arrivals**) to the wider population:
+Case rates: High tier uses the survey-calibrated rate (60 cases / 2,084 GTFS
+AM arrivals = **2.9 cases per 100 peak arrivals**); Medium and Low apply
+**50 % and 25 % of that rate** — stated assumptions to be validated by spot
+surveys, adjustable in the Excel model.
 
-| Scenario | Annual cases (network) | Direct delay @30 s | Extra late trips/yr @30 s / @60 s | ΔOTP on peak trips @30 s / @60 s |
-|---|---|---|---|---|
-| Low — new stops at half the survey rate | ≈ 106,000 | ≈ 880 bus-h | 2,700 / 6,700 | −0.11 pp / −0.26 pp |
-| Central — survey rate throughout | ≈ 182,000 | ≈ 1,500 bus-h | 4,700 / 11,500 | **−0.18 pp / −0.45 pp** |
+| Tier | Stops | AM-peak arrivals (share of network) | Annual cases | Delay @30 s | Extra late trips/yr @30 s / @60 s | ΔOTP on peak trips @30 s / @60 s |
+|---|---|---|---|---|---|---|
+| **High** (profile-matched) | 112 | 12,622 (24 %) | ≈ 182,000 | ≈ 1,510 bus-h | 4,700 / 11,500 | −0.18 / −0.45 pp |
+| **Medium** (next 400 by throughput, 50 % rate) | 400 | 18,657 (36 %) | ≈ 134,000 | ≈ 1,120 bus-h | 3,480 / 8,500 | −0.14 / −0.33 pp |
+| **Low** (following 400, 25 % rate) | 400 | 8,273 (16 %) | ≈ 30,000 | ≈ 250 bus-h | 770 / 1,880 | −0.03 / −0.07 pp |
+| **Total** | **912** | **39,552 (76 %)** | **≈ 346,000** | **≈ 2,880 bus-h** | **8,950 / 21,880** | **−0.35 / −0.85 pp** |
 
 (Peak-trip denominator: 9,771 weekday bus trips with a peak-hour stop event
 × 261 days. Flip probabilities transferred from the 22 Jul AVL distribution.)
 
 Caveats: several high-volume matches are bus-station laybys (Ibn Battuta,
 Rashidiya, Gold Souq) where enforcement conditions differ from curbside
-stops — the low scenario partly prices this in; and the case rate is
-calibrated from a single day. A 1–2 week survey at ~10 of the 112 stops
-would firm the network figure considerably.
+stops; the Medium/Low rate multipliers are assumptions, not measurements;
+and the case rate is calibrated from a single day. A 1–2 week survey at
+~10 High-tier and ~10 Medium-tier stops would firm all three tiers.
 
 ## 9. Benchmarking
 
