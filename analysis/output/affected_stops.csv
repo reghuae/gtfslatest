@@ -1,0 +1,113 @@
+stop_id,stop_name,buses_day,buses_am_peak,buses_pm_peak,routes_served,metro_dist_m,near_metro,mall_frontage,is_surveyed,affected
+903502,Ibn Battuta Bus Station 2,1986,355,359,11,90.0,True,False,False,True
+397501,Union Metro Bus Stop 2-1,1904,338,339,12,118.0,True,False,False,True
+567502,Mall of the Emirates Bus Station 2,1610,286,292,8,59.0,True,True,False,True
+954501,Equiti Metro Bus Stop Landside 1,1492,265,264,8,39.0,True,False,False,True
+100024,Gold Souq Bus Station 24,1445,265,269,8,22.0,True,True,False,True
+205101,Abu Baker Al Siddique Metro Bus Stop 1,1403,251,259,14,21.0,True,False,False,True
+961502,Rashidiya Bus Station Gate 2,1366,246,251,9,96.0,True,False,False,True
+472501,Baniyas Square Metro Bus Stop,1219,225,231,7,88.0,True,False,False,True
+441501,Dubai Mall Metro Bus Stop Landside 1,1241,224,221,8,66.0,True,True,False,True
+921101,Rashidiya Bus Station Parking (Non Stop),1133,223,220,12,141.0,True,False,False,True
+723501,National Paints Metro Bus Stop Landside,1304,219,219,7,28.0,True,False,False,True
+575501,Al Fardan Exchange Metro Bus Stop Seaside,1192,216,215,6,0.0,True,False,False,True
+215115,,1154,211,212,6,195.0,True,False,False,True
+292602,Expo 2020 Metro Station 2,1166,208,210,7,9.0,True,False,False,True
+186102,Al Ras Metro Bus Stop 2,1050,195,199,7,126.0,True,False,False,True
+376501,Union Metro Bus Stop 1-1,1042,182,182,16,174.0,True,False,False,True
+140001,Salah Al Din Metro Bus Stop 1,1049,180,184,14,118.0,True,False,True,True
+451501,ADCB Metro Bus Stop Seaside,1020,179,178,10,7.0,True,False,False,True
+604502,Al Garhoud Metro Bus Stop 2,977,177,179,5,26.0,True,False,False,True
+140002,Salah Al Din Metro Bus Stop 2,934,173,176,11,105.0,True,False,True,True
+186101,Al Ras Metro Bus Stop 1,938,171,175,8,41.0,True,False,False,True
+198102,Al Nahda  Metro Bus Stop 2,940,168,170,13,35.0,True,False,False,True
+197102,Stadium Metro Bus Stop 2,895,167,166,13,29.0,True,False,False,True
+202101,Sharaf DG Metro Bus Stop 1-1,856,162,162,15,340.0,False,False,True,True
+935501,Sobha Realty Metro Bus Stop Seaside,947,157,154,7,166.0,True,False,False,True
+546502,DIP Metro Bus Stop 2,854,152,156,6,41.0,True,False,False,True
+197101,Stadium Metro Bus Stop 1,844,152,150,13,149.0,True,False,False,True
+206101,Abu Baker Al Siddique Metro Bus Stop 2,838,152,150,11,30.0,True,False,False,True
+201101,Al Ghubaiba Metro Bus Stop,778,149,152,6,125.0,True,False,False,True
+302201,,848,147,149,5,49.0,True,False,False,True
+546501,DIP Metro Bus Stop 1,939,144,148,6,42.0,True,False,False,True
+196101,Abu Hail Metro Bus Stop B,762,138,136,9,39.0,True,False,False,True
+202102,Sharaf DG Metro Bus Stop 1-2,798,137,143,14,239.0,False,False,True,True
+962101,Creek Metro Bus Stop,722,135,137,4,37.0,True,False,False,True
+376502,Union Metro Bus Stop 1-2,730,135,127,12,158.0,True,False,False,True
+200102,Al Qusais Metro Bus Stop 2,714,131,131,7,149.0,True,False,False,True
+199102,Dubai Airport Free Zone Metro Bus Stop 2,708,131,128,11,38.0,True,False,False,True
+461001,Max Metro Bus Stop Seaside,708,126,127,8,50.0,True,False,False,True
+208102,,655,124,127,3,31.0,True,False,False,True
+138101,ADCB Metro Bus Stop Landside,703,124,125,9,139.0,True,False,False,True
+112001,Naif Intersection 1,695,119,109,15,576.0,False,False,True,True
+218101,"Hor Al Anz East, Qiyadah Metro Bus Stop",666,119,118,4,170.0,True,False,False,True
+705501,Insurance Market Metro Bus Stop Landside 1,651,118,117,2,24.0,True,True,False,True
+198101,Al Nahda  Metro Bus Stop 1,632,116,115,9,51.0,True,False,False,True
+112002,Naif Intersection 2,664,116,107,15,647.0,False,False,True,True
+114001,"Burj Nahar, Intersection 1",659,115,101,15,922.0,False,False,True,True
+200101,Al Qusais Metro Bus Stop 1,584,110,113,8,118.0,True,False,False,True
+961508,Rashidiya Bus Station Arrival,573,109,107,12,84.0,True,False,False,True
+209101,Oud Metha Metro Bus Stop 1,542,109,101,10,61.0,True,False,False,True
+114002,"Burj Nahar, Intersection 2",603,108,98,14,914.0,False,False,True,True
+195504,,597,107,107,4,83.0,True,False,False,True
+603501,Danube Metro Bus Stop Landside,617,104,104,8,73.0,True,False,False,True
+209102,Oud Metha Metro Bus Stop 2,577,104,105,11,71.0,True,False,False,True
+199101,Dubai Airport Free Zone Metro Bus Stop 1,560,103,102,7,79.0,True,False,False,True
+570501,DMCC Metro Bus Stop Seaside,603,103,100,5,44.0,True,False,False,True
+544501,Airport Terminal 3,564,93,96,5,88.0,True,False,False,True
+633101,Jumeirah Golf Estate Metro Bus Stop 1,523,93,98,3,71.0,True,False,False,True
+131102,Max Metro Bus Stop Landside 2,559,92,101,11,91.0,True,False,False,True
+210001,,605,90,90,3,45.0,True,False,False,True
+108001,Khaleej Road,505,89,82,11,188.0,True,False,False,True
+195505,,478,89,88,3,75.0,True,False,False,True
+136101,Emirates Tower Metro Bus Stop Seaside,474,88,80,6,136.0,True,False,True,True
+400002,BurJuman Metro Bus Stop 2-2,475,85,86,8,121.0,True,True,True,True
+606501,Al Furjan Metro Bus Stop 2,467,83,85,3,9.0,True,False,False,True
+455002,Hana Center 2,411,78,73,7,1293.0,False,True,True,True
+228102,City Centre Metro Bus Stop 2-1,441,74,71,9,193.0,True,True,False,True
+400001,BurJuman Metro Bus Stop 2-1,407,73,72,8,341.0,False,True,True,True
+292601,,484,72,72,2,55.0,True,False,False,True
+235001,Emirates Metro Bus Stop 1,370,71,71,5,195.0,True,False,False,True
+399001,,333,70,70,3,176.0,True,False,False,True
+165101,"Al Quoz, Al Khail Gate 1",355,70,59,4,2663.0,False,False,True,True
+166101,"Al Quoz, Al Khail Gate 2",354,69,62,4,2914.0,False,False,True,True
+883001,Sahara Center 1,336,68,59,5,2273.0,False,True,False,True
+314101,Business Bay Metro Bus Stop Landside 1,308,67,67,3,62.0,True,False,False,True
+195506,Abu Hail Bus Station 6,352,67,66,4,35.0,True,False,False,True
+540101,"Al Quoz, Al Khail Gate Entrance 1",338,66,56,5,2210.0,False,False,True,True
+641501,"Dubai Festival City, Festival Centre 1",344,65,66,5,537.0,False,True,False,True
+883002,Sahara Center 2,300,65,61,4,2560.0,False,True,False,True
+784001,Parco Hypermarket,388,64,66,6,1269.0,False,True,False,True
+312502,"Al Nahda, Madina Super Market 2",335,64,58,6,2328.0,False,True,False,True
+212001,Onpassive Bus Terminus 1,272,63,52,2,139.0,True,False,False,True
+199001,City Centre Metro Bus Stop 1-1,334,62,50,7,108.0,True,True,False,True
+211901,Onpassive Bus Terminus 2,372,60,56,2,194.0,True,False,False,True
+466101,"Al Quoz, Al Khail Gate 3",305,59,52,4,3265.0,False,False,True,True
+518102,Discovery Garden Metro Bus Stop 2,335,59,62,3,60.0,True,False,False,True
+713501,,322,58,58,2,130.0,True,False,False,True
+401001,BurJuman Metro Bus Stop 3-1,324,58,56,6,259.0,False,True,False,True
+312501,"Al Nahda, Madina Super Market 1",261,58,41,6,2194.0,False,True,False,True
+131101,,324,58,58,3,48.0,True,False,False,True
+496101,Coral Tower 1,234,57,55,5,180.0,True,False,False,True
+195101,Gold Souq Bus Station External,316,57,54,7,71.0,True,True,False,True
+455001,Hana Center 1,319,56,54,6,1311.0,False,True,True,True
+399002,,322,56,60,3,136.0,True,False,False,True
+895501,Emirates Tower Metro Bus Stop Landside,316,56,55,4,198.0,True,False,True,True
+977501,Trade Center Metro Bus Stop,304,56,52,5,195.0,True,True,False,True
+455101,Energy Metro Bus Stop Landside,320,54,57,2,83.0,True,False,False,True
+203201,Sharaf DG Metro Bus Stop 3-1,323,53,58,8,117.0,True,False,True,True
+441503,Dubai Mall Metro Bus Stop Landside 3,209,51,40,3,28.0,True,True,False,True
+808501,Business Bay Metro Bus Stop Seaside,268,50,44,3,130.0,True,False,False,True
+785001,Qaser Al Kabayel Center,300,49,52,5,1058.0,False,True,False,True
+256103,Al Jafiliya Bus Station 3,285,49,47,3,118.0,True,False,True,True
+469001,Dubai Birds and Pets Market 1,221,47,40,3,11587.0,False,True,False,True
+424001,"Karama, Dubai Municipality Center 1",244,47,38,5,512.0,False,True,False,True
+496102,Coral Tower 2,176,46,41,4,172.0,True,False,False,True
+440001,Rashid Hospital Roundabout 1,260,46,42,6,164.0,True,False,False,True
+314102,Business Bay Metro Bus Stop Landside 2,188,43,43,3,93.0,True,False,True,True
+314103,Business Bay Metro Bus Stop Landside 3,177,41,31,2,133.0,True,False,True,True
+611102,Business Bay 2 Bus Station 2,137,35,34,2,378.0,False,False,True,True
+155001,Al Rigga Metro Bus Stop 1,137,23,23,2,81.0,True,False,True,True
+256102,Al Jafiliya Bus Station 2,61,18,9,1,112.0,True,False,True,True
+155002,Al Rigga Metro Bus Stop 2,35,7,5,1,26.0,True,False,True,True
+256106,Al Jafiliya Bus Station 6,35,5,6,1,138.0,True,False,True,True

@@ -150,15 +150,37 @@ Two structural notes:
   Burj Nahar and Salah Al Din (routes 10/13A corridor) can be hit 2–3 times.
   The model counts each case once, again conservative.
 
-## 8. Scaling beyond the 11 locations (pending GTFS)
+## 8. Scaling beyond the 11 locations (network-wide, GTFS-based)
 
-The 11 surveyed sites share a profile: metro-station forecourts and mall
-frontages on high-frequency corridors. Once the GTFS export is available
-(`dataiku_webapp/`), every stop in the network will be scored on route count,
-peak throughput and metro/mall adjacency to estimate the affected-stop
-population. If the profile matches of the order of 100+ stops network-wide,
-the network OTP effect is roughly an order of magnitude above Section 7's
-11-stop figures — to be validated with a second, multi-day survey.
+Every bus stop in the GTFS network (2,873 stops; 21,744 weekday bus trips)
+was scored on the profile of the 11 surveyed sites: **AM-peak throughput at
+least that of the survey cluster's lower quartile (≥ 46 arrivals/3 h) AND
+metro/tram station within 200 m or mall/souq frontage** (computation:
+`analysis/network_scoring.py`).
+
+**Result: 112 stops network-wide fit the affected profile** (88 metro-
+adjacent, 23 mall-frontage), together receiving **12,622 AM-peak bus
+arrivals** — six times the surveyed cluster's 2,084. The largest non-surveyed
+exposures are Ibn Battuta Bus Station, Union Metro, Mall of the Emirates,
+Equiti Metro, Gold Souq, Abu Baker Al Siddique Metro and Dubai Mall Metro
+(full list: `analysis/output/affected_stops.csv`).
+
+Applying the survey-calibrated case rate (60 cases / 2,084 GTFS AM arrivals =
+**2.9 cases per 100 peak arrivals**) to the wider population:
+
+| Scenario | Annual cases (network) | Direct delay @30 s | Extra late trips/yr @30 s / @60 s | ΔOTP on peak trips @30 s / @60 s |
+|---|---|---|---|---|
+| Low — new stops at half the survey rate | ≈ 106,000 | ≈ 880 bus-h | 2,700 / 6,700 | −0.11 pp / −0.26 pp |
+| Central — survey rate throughout | ≈ 182,000 | ≈ 1,500 bus-h | 4,700 / 11,500 | **−0.18 pp / −0.45 pp** |
+
+(Peak-trip denominator: 9,771 weekday bus trips with a peak-hour stop event
+× 261 days. Flip probabilities transferred from the 22 Jul AVL distribution.)
+
+Caveats: several high-volume matches are bus-station laybys (Ibn Battuta,
+Rashidiya, Gold Souq) where enforcement conditions differ from curbside
+stops — the low scenario partly prices this in; and the case rate is
+calibrated from a single day. A 1–2 week survey at ~10 of the 112 stops
+would firm the network figure considerably.
 
 ## 9. Benchmarking
 
