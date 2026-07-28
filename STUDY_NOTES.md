@@ -41,7 +41,7 @@ Source: field observation, **07:00–10:00, single day**, 11 locations.
 | Sample period | 1 day, 07:00–10:00 (AM peak) | Confirmed |
 | Average blockage duration per case | **30 seconds** | Confirmed by ops (to be sanity-checked against runtime data) |
 | OTP definition | On time = departure between **1 min early and 5 min late** (early < −1 min, late > +5 min) | Confirmed |
-| Runtime report | 22 Jul 2026, routes above | **Pending — attachment was not the runtime report; to be re-sent** |
+| Runtime report | 22 Jul 2026, routes above | Received — `data/Runtime_2026-07-22.xlsx` (75,780 AVL stop records, 38 routes, 2,999 trips) |
 | Parking-violation records near stops | Not available | Confirmed unavailable |
 | PM peak observations | Not available — to be assumed from AM profile | Assumption |
 
@@ -52,17 +52,12 @@ Dataiku project **RTABUSSCN**. The webapp in [`dataiku_webapp/`](dataiku_webapp/
 exports those tables as standard GTFS text files / `gtfs.zip`, which will then
 be committed to this repository under `gtfs/`.
 
-## Analysis plan (to build once GTFS + runtime report are in)
+## Status
 
-1. Map the 11 locations to GTFS `stop_id`s (name matching, user confirms).
-2. Exposure: scheduled buses/stop in AM (07–10) and PM (17–20) peaks from
-   `stop_times` × `trips` × `calendar`.
-3. Risk-profile all stops (routes served, peak throughput, metro/mall
-   adjacency) to identify the wider affected-stop population.
-4. Annual extrapolation of blockage events with stated adjustment factors
-   (PM factor, weekday/weekend, seasonality, Ramadan).
-5. OTP impact: delay-per-affected-trip scenarios validated against the
-   22 Jul runtime report, converted to Δ percentage points against the
-   −1/+5 min window.
-6. Benchmarking: London bus stop clearways, NYC MTA ABLE bus-mounted
-   cameras, Sydney/TfNSW bus zones, Singapore LTA, Abu Dhabi ITC.
+The study is built — see **[STUDY.md](STUDY.md)** for the full write-up,
+`analysis/runtime_analysis.py` for the reproducible computation, and
+`analysis/parking_otp_impact_model.xlsx` for the adjustable scenario model.
+
+Remaining step: network-wide affected-stop identification, which needs the
+GTFS export from `dataiku_webapp/` (risk-profiling every stop on route
+count, peak throughput and metro/mall adjacency).

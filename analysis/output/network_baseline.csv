@@ -1,0 +1,4 @@
+scope,n,ontime,late,early
+all stop events,72679,0.8716,0.1091,0.0193
+peak stop events,25478,0.855,0.1266,0.0184
+trips (terminal stop),2999,0.7909,0.146,0.063

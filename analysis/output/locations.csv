@@ -1,0 +1,12 @@
+location,n_stops,cases_am,buses_day,buses_am_peak,buses_pm_peak,buses_per_am_hour,cases_per_100_am_buses,otp_day,otp_am_peak,late_share_day
+Naif Intersection,2,5,1086,195,168,65.0,2.6,0.827,0.862,0.148
+Burj Nahar,2,5,1087,195,169,65.0,2.6,0.845,0.877,0.146
+Al Jafliya,3,6,220,45,33,15.0,13.3,0.936,0.944,0.044
+Emirates Tower,2,3,265,48,40,16.0,6.2,0.916,0.923,0.065
+Al Khail Mall,4,2,1127,211,204,70.3,0.9,0.933,0.969,0.042
+Al Hana Center,2,5,716,128,113,42.7,3.9,0.919,0.906,0.056
+Burjuman,2,7,438,77,78,25.7,9.1,0.902,0.896,0.089
+Sharaf DG Metro,3,8,1031,179,178,59.7,4.5,0.787,0.749,0.123
+Al Rigga Metro,2,5,176,31,26,10.3,16.1,0.835,0.935,0.148
+Salah Al Din Metro,2,4,236,43,37,14.3,9.3,0.915,0.93,0.072
+Business Bay,3,10,455,102,101,34.0,9.8,0.939,0.959,0.054
