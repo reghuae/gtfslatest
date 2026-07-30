@@ -39,6 +39,14 @@ case for enforcement is the combination: measurable OTP erosion **plus**
 hundreds of thousands of annual passenger-safety exposures where boarding
 happens in a live traffic lane.
 
+Camera enforcement turns the problem into a self-funding programme
+(Sections 10–11): at an AED 200 fine, detected violations yield **≈ AED 46 M
+in year 1**, declining by design as deterrence works. The recommended hybrid
+— **fixed cameras at the 512 High + Medium stops (5-yr NPV +79 M AED,
+payback < 1 year) plus a 20–30 unit portable fleet for the long tail
+(NPV +8–13 M)** — pays for itself within the first year and delivers the
+OTP and safety gains as the permanent return.
+
 ---
 
 ## 2. Data sources
@@ -205,7 +213,80 @@ Dubai's fine level is mid-range internationally; the gap is **automated,
 continuous enforcement**. NYC's model (cameras on the buses themselves) is
 the closest fit for high-frequency corridors like routes 10/13A/C01.
 
-## 10. Recommendations
+## 10. Detection & revenue potential
+
+Cameras watch a layby continuously, so they detect more than the bus-
+coinciding blockages counted in Section 8: off-peak events add **20 % of the
+peak count** (PTA operations estimate). Not every detected event becomes
+cash: an **enforceability rate of 70 %** (plate readable, genuinely stationary
+in the marked layby, de-duplicated) and a **collection rate of 80 %** are
+applied — a combined ticket-to-cash rate of **56 %**. The fine is **AED 200**
+per violation (PTA direction; below the AED 500 federal bus-stop fine and
+international peers, see Section 9).
+
+A deterrence decay is built in deliberately: violations decline **25 %/year**
+under continuous fixed enforcement (15 %/year under monthly-rotation portable
+coverage), in line with NYC ACE experience. Revenue therefore **falls** every
+year while the OTP and safety benefit **grows** — the fines fund the system
+in years 1–3; the permanent return is service quality.
+
+Year-1 detectable violations: ≈ 415,000 network-wide (346k peak cases
+× 1.2), of which ≈ 290,000 become tickets and ≈ 232,000 are collected —
+**≈ AED 46 M gross in year 1**, declining to ≈ AED 15 M by year 5.
+
+## 11. ROI — two enforcement investment options
+
+Camera costs are benchmark assumptions (no vendor quotes yet): fixed ANPR
+site AED 40k capex + AED 5k/yr opex; portable unit AED 15k capex +
+AED 60k/yr operational overhead (crew share, vehicle, redeployment,
+maintenance). Horizon **5 years**, discount rate **7 %**. Computation:
+`analysis/roi_model.py`; year-by-year tables in `analysis/output/roi_*.csv`.
+
+### Option A — fixed cameras at all tiered stops (912)
+
+| Tier | Capex | Opex/yr | Revenue yr 1 | 5-yr NPV (cash) | Payback |
+|---|---|---|---|---|---|
+| High (112 stops) | AED 4.5 M | 0.6 M | **24.4 M** | **+56.6 M** | < 1 year |
+| Medium (400 stops) | 16.0 M | 2.0 M | 18.0 M | **+22.6 M** | ~1 year |
+| Low (400 stops) | 16.0 M | 2.0 M | 4.0 M | **−13.8 M** | never |
+| All 912 | 36.5 M | 4.6 M | 46.5 M | +65.4 M | ~1 year |
+
+The Low tier destroys value under fixed cameras — violation density is too
+thin to cover the fixed cost. **Option A should stop at High + Medium
+(512 stops: capex 20.5 M, 5-yr NPV +79.2 M).**
+
+### Option B — portable cameras, monthly rotation across High-tier stops
+
+| Fleet | Capex | Opex/yr | Revenue yr 1 | 5-yr NPV (cash) | Payback |
+|---|---|---|---|---|---|
+| 20 units | AED 0.3 M | 1.2 M | 4.4 M | **+8.3 M** | < 1 year |
+| 30 units | 0.45 M | 1.8 M | 6.5 M | **+12.5 M** | < 1 year |
+| 40 units | 0.6 M | 2.4 M | 8.7 M | **+16.6 M** | < 1 year |
+| 50 units | 0.75 M | 3.0 M | 10.9 M | **+20.8 M** | < 1 year |
+
+Portable economics rest on targeting: at High-tier stops each deployed
+camera sees ≈ 7.5 events/day (≈ AED 830/day in collected fines vs ≈ AED
+240/day all-in cost). The same unit at a Low-tier stop would roughly break
+even — portable value comes from following the violation density, plus a
+"cameras could be anywhere" deterrence halo that fixed sites lack.
+
+### Recommended: hybrid
+
+1. **Fixed cameras at High + Medium tiers** (512 stops) — NPV +79 M,
+   self-funding within year 1.
+2. **A 20–30 unit portable fleet** rotating across Low-tier and emerging
+   hotspots — NPV +8–13 M, and it doubles as the measurement tool that
+   validates the tier assumptions (Section 8).
+3. Revenue is a declining curve by design; the business case should be sold
+   on OTP recovery (up to +0.85 pp peak) and elimination of live-lane
+   boarding, with fines as the financing bridge.
+
+Sensitivity worth noting: at the federal AED 500 fine level, all figures
+scale ×2.5 — even the Low tier turns positive. **Who retains the fine
+revenue (RTA vs the wider government fine system) is unconfirmed and is the
+single biggest swing factor in the cash ROI.**
+
+## 12. Recommendations
 
 1. **Pilot automated enforcement** (bus-mounted or pole-mounted cameras) at
    the five worst sites: Sharaf DG Metro, Business Bay, Burjuman, Naif
@@ -218,7 +299,7 @@ the closest fit for high-frequency corridors like routes 10/13A/C01.
 4. **Data pipeline**: monthly join of AVL runtime × violation records (once
    available) to track the KPI "obstructed arrivals per 100 peak buses".
 
-## 11. Limitations
+## 13. Limitations
 
 - One-day, AM-only field sample; PM assumed at 91 % of AM intensity.
 - Single-value 30 s delay assumption; international evidence suggests

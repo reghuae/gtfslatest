@@ -1,0 +1,8 @@
+option,scope,capex_m,opex_m_per_yr,rev_y1_m,npv_cash_m,npv_econ_m,payback_yr
+A fixed,High (112 stops),4.48,0.56,24.41,56.6,57.2,1
+A fixed,Medium (400 stops),16.0,2.0,18.04,22.6,23.0,1
+A fixed,Low (400 stops),16.0,2.0,4.01,-13.8,-13.7,>5
+B portable,20 units (High tier rotation),0.3,1.2,4.36,8.3,,1
+B portable,30 units (High tier rotation),0.45,1.8,6.54,12.5,,1
+B portable,40 units (High tier rotation),0.6,2.4,8.72,16.6,,1
+B portable,50 units (High tier rotation),0.75,3.0,10.9,20.8,,1
