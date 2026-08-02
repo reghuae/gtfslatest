@@ -54,6 +54,19 @@ CAPEX_PORTABLE_UNIT = 15_000.0
 OPEX_PORTABLE_UNIT = 60_000.0  # crew share, vehicle, redeploy, maintenance
 BUS_COST_PER_H = 250.0         # bus operating cost, delay-savings valuation
 
+# ---- kerb monetization (charging private operators for layby use) ---------
+# Product 1: annual off-peak layby-access permit for licensed shuttle/coach
+#            operators (max 3-min dwell, off-peak windows, geofence-verified)
+PERMIT_VEHICLES = 2_000
+PERMIT_FEE = 1_200.0           # AED per vehicle per year
+# Product 2: pay-per-use kerb fee at permitted stops, billed via the same
+#            ANPR cameras (no extra field hardware)
+PAID_DWELLS_PER_DAY = 1_000
+DWELL_FEE = 5.0                # AED per stop-use
+KERB_RAMP = [0.4, 0.8, 1.0, 1.0, 1.0]   # adoption ramp, years 1-5
+KERB_CAPEX = 2_000_000.0       # permit platform + billing integration
+KERB_OPEX = 500_000.0          # annual administration
+
 TICKET_RATE = ENFORCEABILITY * COLLECTION   # 0.56
 
 
@@ -137,14 +150,48 @@ def option_b():
     return pd.DataFrame(rows), summary
 
 
+def kerb_monetization():
+    """Charging private operators for legal, managed layby use."""
+    steady = PERMIT_VEHICLES * PERMIT_FEE + PAID_DWELLS_PER_DAY * DWELL_FEE \
+        * 365
+    rows = []
+    pv_rev = pv_opex = 0.0
+    cum_cash, payback = -KERB_CAPEX, None
+    for t in range(1, YEARS + 1):
+        revenue = steady * KERB_RAMP[t - 1]
+        pv_rev += pv(revenue, t)
+        pv_opex += pv(KERB_OPEX, t)
+        cum_cash += revenue - KERB_OPEX
+        if payback is None and cum_cash >= 0:
+            payback = t
+        rows.append(dict(year=t, revenue_m=round(revenue / 1e6, 2),
+                         opex_m=round(KERB_OPEX / 1e6, 2)))
+    npv = pv_rev - pv_opex - KERB_CAPEX
+    summary = dict(
+        option="C kerb monetization",
+        scope=f"{PERMIT_VEHICLES:,} permits + {PAID_DWELLS_PER_DAY:,} "
+              f"paid dwells/day",
+        capex_m=round(KERB_CAPEX / 1e6, 2),
+        opex_m_per_yr=round(KERB_OPEX / 1e6, 2),
+        rev_y1_m=round(steady * KERB_RAMP[0] / 1e6, 2),
+        npv_cash_m=round(npv / 1e6, 1),
+        npv_econ_m="",
+        payback_yr=payback if payback else ">5")
+    return pd.DataFrame(rows), [summary], steady
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     a_rows, a_sum = option_a()
     b_rows, b_sum = option_b()
+    k_rows, k_sum, k_steady = kerb_monetization()
     a_rows.to_csv(os.path.join(OUT, "roi_option_a.csv"), index=False)
     b_rows.to_csv(os.path.join(OUT, "roi_option_b.csv"), index=False)
-    s = pd.DataFrame(a_sum + b_sum)
+    k_rows.to_csv(os.path.join(OUT, "roi_kerb_monetization.csv"), index=False)
+    s = pd.DataFrame(a_sum + b_sum + k_sum)
     s.to_csv(os.path.join(OUT, "roi_summary.csv"), index=False)
+    print("Kerb monetization steady-state revenue: AED %.1fM/yr"
+          % (k_steady / 1e6))
     print("Assumptions: fine AED %.0f, ticket rate %.0f%%, decay fixed %.0f%%"
           "/yr portable %.0f%%/yr, %d yrs @ %.0f%%"
           % (FINE_AED, 100 * TICKET_RATE, 100 * DECAY_FIXED,

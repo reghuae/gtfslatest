@@ -45,7 +45,11 @@ in year 1**, declining by design as deterrence works. The recommended hybrid
 — **fixed cameras at the 512 High + Medium stops (5-yr NPV +79 M AED,
 payback < 1 year) plus a 20–30 unit portable fleet for the long tail
 (NPV +8–13 M)** — pays for itself within the first year and delivers the
-OTP and safety gains as the permanent return.
+OTP and safety gains as the permanent return. Adding **kerb monetization**
+(charging licensed operators for managed off-peak layby use, Section 11
+Option C: +10.2 M NPV, AED 4.2 M/yr steady) lifts the **total programme
+5-yr NPV to ≈ +98 M AED** and gives the programme a growing revenue line
+that outlasts the declining fine curve.
 
 ---
 
@@ -213,6 +217,18 @@ Dubai's fine level is mid-range internationally; the gap is **automated,
 continuous enforcement**. NYC's model (cameras on the buses themselves) is
 the closest fit for high-frequency corridors like routes 10/13A/C01.
 
+**Kerb monetization benchmarks** (paid, managed use of high-value kerb):
+
+| Practice | Where | Mechanism |
+|---|---|---|
+| Airport kerb-access fees | SFO, LAX and most large US airports | Taxis/ride-hail/shuttles pay ~US$2.50–5 per pick-up, billed automatically via geofence/AVI — the direct template for ANPR-billed layby dwell fees |
+| Smart loading zones | Pittsburgh, Los Angeles, Columbus, Aspen | Camera-enforced kerb zones billed per minute of commercial use; violators pay, registered users pay less — enforcement and monetization on one sensor |
+| Paid coach bays & permits | Westminster / central London | Coaches pay for timed use of high-demand kerb bays via permit/app |
+| TNC pick-up zone fees | Chicago, various US CBDs | Designated ride-hail zones with per-trip surcharge for kerb access |
+
+The pattern is consistent: **the same camera that fines illegal use bills
+legal use** — cities monetise scarce kerb rather than only policing it.
+
 ## 10. Detection & revenue potential
 
 Cameras watch a layby continuously, so they detect more than the bus-
@@ -270,16 +286,41 @@ camera sees ≈ 7.5 events/day (≈ AED 830/day in collected fines vs ≈ AED
 even — portable value comes from following the violation density, plus a
 "cameras could be anywhere" deterrence halo that fixed sites lack.
 
-### Recommended: hybrid
+### Option C — kerb monetization: charge private operators for legal layby use
+
+Enforcement creates a licensed alternative to sell: instead of blocking
+stops illegally, hotel/school/staff shuttle and coach operators can **pay
+for managed, off-peak layby access** — geofence-verified, max 3-minute
+dwell, never during bus peaks. The ANPR cameras installed for enforcement
+double as the billing/verification infrastructure, so marginal field cost
+is ~zero. Two products (all assumptions, adjustable in the Excel model):
+
+| Product | Assumption | Steady revenue |
+|---|---|---|
+| Annual layby-access permit (licensed operators) | 2,000 vehicles × AED 1,200/yr | AED 2.4 M/yr |
+| Pay-per-use kerb fee (ANPR-billed) | 1,000 dwells/day × AED 5 × 365 | AED 1.8 M/yr |
+| **Total (100 % adoption from year 3)** | ramp 40 % / 80 % / 100 % | **AED 4.2 M/yr** |
+
+Setup: AED 2.0 M platform capex + 0.5 M/yr administration. **5-yr NPV
++10.2 M, payback year 2.** Unlike fines, this revenue **grows** with
+adoption and is permanent — it replaces the declining fine curve as the
+programme's steady-state funding, and converts today's violators into
+paying customers with a legal option.
+
+### Recommended: hybrid + monetization
 
 1. **Fixed cameras at High + Medium tiers** (512 stops) — NPV +79 M,
    self-funding within year 1.
 2. **A 20–30 unit portable fleet** rotating across Low-tier and emerging
    hotspots — NPV +8–13 M, and it doubles as the measurement tool that
    validates the tier assumptions (Section 8).
-3. Revenue is a declining curve by design; the business case should be sold
-   on OTP recovery (up to +0.85 pp peak) and elimination of live-lane
-   boarding, with fines as the financing bridge.
+3. **Kerb monetization** (permits + pay-per-use) launched with Phase 2,
+   riding on the same cameras — NPV +10.2 M and the programme's permanent
+   revenue line. **Total programme 5-yr NPV ≈ +98 M AED.**
+4. Fine revenue is a declining curve by design; the business case should be
+   sold on OTP recovery (up to +0.85 pp peak) and elimination of live-lane
+   boarding, with fines as the financing bridge and kerb fees as the
+   steady state.
 
 Sensitivity worth noting: at the federal AED 500 fine level, all figures
 scale ×2.5 — even the Low tier turns positive. **Who retains the fine
